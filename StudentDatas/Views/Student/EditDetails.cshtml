@@ -1,0 +1,71 @@
+﻿@model StudentAppCore.Entity.Student_Models.Student_Marks
+@{
+    ViewBag.Title = "Savestudentrecords";
+}
+<h2>Savestudentrecords</h2>
+
+<div>
+
+
+
+    @using (Html.BeginForm("Savestudentrecords", "Student", FormMethod.Post))
+
+    {
+
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    @Html.Label("Roll_No : ")
+                    @Html.TextBoxFor(model => model.Roll_No, new { @class = "form-control", @id = "rollNo" })
+                </div>
+                <div>
+                    @Html.Label("Name : ")
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("OS : ")
+                    @Html.TextBoxFor(model => model.OS, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("CS : ")
+                    @Html.TextBoxFor(model => model.CS, new { @class = "form-control" })
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div>
+                    @Html.Label("DBMS : ")
+                    @Html.TextBoxFor(model => model.DBMS, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("JAVA : ")
+                    @Html.TextBoxFor(model => model.JAVA, new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("PYTHON : ")
+                    @Html.TextBoxFor(model => model.PYTHON, new { @class = "form-control" })
+                </div>
+
+            </div>
+        </div>
+
+        if (Model != null && Model.Std_Id > 0)
+        {
+            <div class=" text-right">
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        }
+        else
+        {
+            <div class=" text-right">
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        }
+        <div>
+
+            <button type="submit" class="btn btn-primary">back</button>
+        </div>
+    }
+</div>

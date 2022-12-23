@@ -1,0 +1,163 @@
+﻿@model IEnumerable<StudentAppCore.Core.Models.StudentMarks>
+@{
+    ViewBag.Title = "GetStudentList";
+}
+
+<h2>GetStudentList</h2>
+
+@{
+    ViewBag.Title = "List";
+    int i = 1;
+
+}
+<style>
+    .table {
+        width: 100%;
+        table-layout: fixed;
+        background-color: azure
+    }
+
+    th {
+        width: 100%;
+        table-layout: fixed;
+        background-color: white;
+    }
+
+    body {
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #6de8f3, #f383cf);
+        font-family: 'Roboto', sans-serif;
+    }
+
+
+    tr {
+        padding: 20px 15px;
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: darkcyan;
+        text-transform: uppercase;
+    }
+
+
+    body {
+        font-family: 'lato', sans-serif;
+    }
+</style>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+@*<link  src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css' crossorigin='anonymous' />*@
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+
+</style>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+@*<link  src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css' crossorigin='anonymous' />*@
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+</head>
+<div>
+    <div class="text-right">
+        <button class="btn btn-success" onclick="Add()"><span><i class="fa-solid fa-plus"></i></span>  ADD</button>
+
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Std_Id</th>
+                <th scope="col">Roll_No</th>
+                <th scope="col">Tamil</th>
+                <th scope="col">English</th>
+                <th scope="col">Maths</th>
+                <th scope="col">Science</th>
+                <th scope="col">Social</th>
+                <th scope="col">Total</th>
+                <th scope="col">Average</th>
+                <th scope="col">Action</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>
+                            @Html.DisplayFor(m => item.StdId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.RollNo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.OS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.DBMS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.CS)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.JAVA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PYTHON)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Average)
+                        </td>
+
+                        <td>
+                            <button onclick="Edit(@(item.StdId))"><span><i class="fa-solid fa-pen-to-square"></i></span></button>
+                        <td>
+                            <button onclick="Delete(@(item.StdId))"><span><i class="fa-solid fa-trash" aria-hidden="true"></i></span></button>
+
+                        </td>
+                    </tr>
+                    i++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        no data found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+
+
+    function Edit(id) {
+        window.location.href = "/Student/EditDetails?id=" + id;
+    }
+
+    function Add() {
+        window.location.href = "/Student/SaveStudentRecords";
+    }
+    function Delete(id) {
+        var result = confirm("Are you sure you want to delete?");
+        if (result) {
+            window.location.href = "/Student/Delete?id=" + id;
+        }
+
+
+    }
+
+
+</script>

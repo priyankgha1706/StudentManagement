@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp.Zero.Common" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentAppCore.Core\StudentAppCore.Core.csproj" />
+    <ProjectReference Include="..\StudentAppCore.Resources\StudentAppCore.Resources.csproj" />
+    <ProjectReference Include="..\StudentAppCore.utilities\StudentAppCore.utilities.csproj" />
+  </ItemGroup>
+
+
+</Project>
